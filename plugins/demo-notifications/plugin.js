@@ -12,6 +12,11 @@ mPlugin = {
 
     OnLoadReady: function() {
         LoadingFinished();
+
+        notifySuccess( "SUCCESS", false );
+        notifyInfo( "INFORMATION", true );
+        notifyWarning( "WARNING", false );
+        notifyError( "ERROR", true );
     },
 
     OnUnload: function() {

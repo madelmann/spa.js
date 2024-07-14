@@ -5,12 +5,22 @@ mPlugin = {
     DEMO_VIEW: "demo-templates",
 
     // instance members
+    data : {
+        transactions: [
+            {
+                amount: 10,
+                broker: "Binance",
+                instrumentCode: "BTC/USD",
+                price: 58000,
+                side: "SELL",
+                time: new Date(),
+                type: null
+            }
+        ]
+    },
     pagination: {
         currentPage: 1,
         numPages: 1,
-    },
-    data : {
-        transactions: []
     },
 
     OnLoad: function() {
@@ -18,6 +28,8 @@ mPlugin = {
     },
 
     OnLoadReady: function() {
+        this.RenderTransactions( this.data );
+
         LoadingFinished();
     },
 
@@ -30,9 +42,7 @@ mPlugin = {
     },
 
     Reload: function() {
-        this.pagination.currentPage = 1;
-
-        this.RenderTransactions( this.transactions );
+        this.RenderTransactions( this.data );
     },
 
     RenderTransactions: function( data ) {
