@@ -1,6 +1,10 @@
 
 var Cache = {
 
+    // CONSTS
+
+    // instance members
+    // here you can add your instance members that you want to fetch and cache
     time: null,
     validated: false,
 
@@ -32,22 +36,18 @@ var Cache = {
     },
 
     Reload: function( OnProgress ) {
-        // fetch public data
-        this.FetchDateTime( OnProgress );   // this is an example of asynchronous data loading during startup
+        // fetch data which does not depend on anything loaded yet
 
-        // fetch private data
-        // this.FetchSettings( OnProgress );
+        this.FetchDateTime( OnProgress );   // this is an example of asynchronous data loading during startup
     },
 
     Retrieve: function() {
         if ( !localStorage.cache ) {
-            // invalid cache!
             return;
         }
 
         var cache = JSON.parse( localStorage.cache );
         if ( !cache ) {
-            // invalid cache!
             return;
         }
 
