@@ -2,7 +2,7 @@
 mPlugin = {
 
     // consts
-    DEMO_VIEW: "demoView",
+    DEMO_VIEW: "demo-refresh-timer",
 
     // instance members
 
@@ -11,11 +11,13 @@ mPlugin = {
     },
 
     OnLoadReady: function() {
-        // your plugin startup done code goes here...
-
         this.Autorefresh();
 
         LoadingFinished();
+    },
+
+    OnUnload: function() {
+        Refresh.Unsubscribe( this.Autorefresh );
     },
 
     Autorefresh: function() {
@@ -24,6 +26,10 @@ mPlugin = {
         elTimer.innerHTML = Templates.clone( "template-timer" )
                                 .bind( "DATETIME", new Date() )
                                 .str();
+    },
+
+    NextDemo: function() {
+        LoadPluginWithHistory( "demo-history-api-access" );
     }
 
 };
