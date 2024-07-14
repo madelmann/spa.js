@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>spa.js</title>
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=4.0, user-scalable=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- robots need input -->
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="robots" content="all" />
+
+        <!-- Apple stuff -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        <!-- Stylesheets -->
+        <link href="style.css" rel="stylesheet" />
+
+        <!-- Bootstrap JS -->
+        <script src="https://unpkg.com/browse/bootstrap@5.3.3/dist/css/bootstrap.bundle.min.js"></script>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://unpkg.com/browse/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Vue.js development version, includes helpful console warnings -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <!-- Internals -->
+        <script src="javascript/api.js" type="text/javascript"></script>
+        <script src="javascript/cache.js" type="text/javascript"></script>
+        <script src="javascript/controls.js" type="text/javascript"></script>
+        <!-- <script src="javascript/conversions.js" type="text/javascript"></script> -->
+        <script src="javascript/history.js" type="text/javascript"></script>
+        <script src="javascript/notifications.js" type="text/javascript"></script>
+        <script src="javascript/parameters.js" type="text/javascript"></script>
+        <script src="javascript/plugins.js" type="text/javascript"></script>
+        <script src="javascript/refresh.js" type="text/javascript"></script>
+        <script src="javascript/settings.js" type="text/javascript"></script>
+        <script src="javascript/templates.js" type="text/javascript"></script>
+        <script src="javascript/translations.js" type="text/javascript"></script>
+        <script src="javascript/utils.js" type="text/javascript"></script>
+
+        <!-- Main scripts -->
+        <script src="javascript/main.js" type="text/javascript"></script>
+        <script src="index.js" type="text/javascript"></script>
+
+        <!-- Plugins -->
+        <link id="plugin_css" type="text/css" rel="stylesheet" />
+        <script id="plugin_script" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            var APP_VERSION = "0.0.0";
+        </script>
+    </head>
+
+    <body onload="OnLoad();">
+        <div id="user-message"></div>
+
+        <container id="container" class="row">
+            <header id="header" class="col-12"></header>
+
+            <main>
+                <div id="navigation" class="hidden"></div>
+
+                <div id="clientarea" class="col-12 row">
+                    <div id="plugin_loading" class="col-12 hidden">
+                        <div class="text-center">
+                            <img class="col-2" src="resources/images/loading.gif" />
+                        </div>
+                    </div>
+
+                    <div id="plugin_html" class="col-12 hidden">
+                        <div v-html="plugin"></div>
+                    </div>
+                    <div id="plugin_template" class="col-12 hidden">
+                        <div v-html="template"></div>
+                    </div>
+                </div>
+            </main>
+
+            <footer id="footer"></footer>
+
+            <div id="notification-area">
+                <!-- <div class="notification error">error</div> -->
+                <!-- <div class="notification info">info</div> -->
+                <!-- <div class="notification success">success</div> -->
+                <!-- <div class="notification warning">warning</div> -->
+            </div>
+        </container>
+
+        <script>
+            __main__();
+        </script>
+    </body>
+
+    <!-- loading -->
+
+    <template id="template-loading">
+        <img src="resources/images/loading.gif" />
+    </template>
+
+    <template id="template-row-loading">
+        <tr>
+            <td><img src="resources/images/loading.gif" /></td>
+        </tr>
+    </template>
+
+    <!-- loading -->
+
+    <!-- pagination -->
+
+    <template id="template-pagination-small">
+        <nav class="center hide_if_large">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link translation" token="PREVIOUS" href="#" onclick="mPlugin.PreviousPage();">PREVIOUS</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">{{CURRENT_PAGE}}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link translation" token="NEXT" href="#" onclick="mPlugin.NextPage();">NEXT</a>
+                </li>
+            </ul>
+        </nav>
+    </template>
+
+    <template id="template-pagination-large-all-pages">
+        <nav class="center show_if_large">
+            <ul class="pagination">
+                {{PAGES}}
+            </ul>
+        </nav>
+    </template>
+
+    <template id="template-pagination-large-page">
+        <li class="page-item">
+            <a class="page-link" href="#" onclick="mPlugin.ShowPage( '{{PAGE}}' );">{{PAGE}}</a>
+        </li>
+    </template>
+
+    <template id="template-pagination-large-page-current">
+        <li class="page-item active">
+            <a class="page-link" aria-current="page">{{PAGE}}</a>
+        </li>
+    </template>
+
+    <template id="template-pagination-large-page-next">
+        <li class="page-item">
+            <a class="page-link translation" token="NEXT" href="#" onclick="mPlugin.NextPage();">NEXT</a>
+        </li>
+    </template>
+
+    <template id="template-pagination-large-page-previous">
+        <li class="page-item">
+            <a class="page-link translation" token="PREVIOUS" href="#" onclick="mPlugin.PreviousPage();">PREVIOUS</a>
+        </li>
+    </template>
+
+    <!-- pagination -->
+</html>

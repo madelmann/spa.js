@@ -1,0 +1,104 @@
+[Section: general]
+
+############################
+### GENERAL TRANSLATIONS ###
+############################
+
+ADMINISTRATION: Administration
+APP_VERSION: Version
+BUG: Bug
+CANCEL: Abbrechen
+DELETE: Löschen
+EDIT: Bearbeiten
+EMAIL: E-Mail
+ENABLED: Aktiviert
+FEATURE: Feature
+INVALID_INPUT: Ungültige Eingabe
+LOADING: Lädt...
+LOGIN_FAILED: Fehler bei der Anmeldung
+LOGIN_SUCCESS: Anmeldung erfolgreich
+LOGOUT: Ausloggen
+LOGOUT_SUCCESS: Abmeldung erfolgreich
+MESSAGE: Nachricht
+NAME: Name
+NEW: Neu
+NEXT: Nächste
+NO_SELECTION: Keine Auswahl
+NOTIFICATIONS: Benachrichtigungen
+OKAY: Okay
+PASSWORD: Passwort
+PLCEHLDR_MAIL: email@adresse.at
+PREVIOUS: Vorherige
+PROGRESS: Modus
+REFRESH: Aktualisieren
+RESET_PASSWORD: Passwort zurücksetzen
+REVERT_CHANGES: Änderungen verwerfen
+SELECT: Auswählen
+SEND_NOTIFICATIONS: Benachrichtigungen senden
+SETTINGS: Einstellungen
+STATUS: Status
+SUBJECT: Betreff
+TIME: Zeitpunkt
+TITLE: spa.js
+UPDATE: Änderungen übernehmen
+UPDATE_SUCCESS: Änderungen übernommen.
+USER: Benutzer
+USER_FEEDBACK: Benutzerfeedback
+USERNAME: Benutzername
+
+############################
+### STATUS & ENUM VALUES ###
+############################
+
+
+###########################
+### PLUGIN TRANSLATIONS ###
+###########################
+
+[Section: template]
+RESULT: Ergebnis
+START_DATE: Startdatum
+
+[Section: loginView]
+DO_IT_NOW: Jetzt loslegen!
+FORGOT_YOUR_PASSWORD: Passwort vergessen?
+NOT_YET_REGISTERED: Noch nicht registriert?
+PLEASE_SIGN_IN: Bitte einloggen
+SIGN_IN: Einloggen
+STAY_LOGGED_IN: Eingeloggt bleiben
+
+[Section: navigation]
+LOGOUT: Ausloggen
+SETTINGS: Einstellungen
+
+[Section: registerView]
+DISCLAIMER: Ich akzeptiere, dass keine Verantwortung für Fehler auf dieser Website übernommen wird, auch nicht für Handelsverluste, die den Besuchern der Webseite entstehen könnten, selbst wenn sie auf Fehler zurückzuführen sind.
+DISCLAIMER_NOT_ACCEPTED: Sie müssen unsere Bedingungen akzeptieren.
+REGISTER: Benutzerkonto anlegen
+REGISTRATION_ERROR: Fehler bei der Erstellung Ihres Benutzerkontos.
+REGISTRATION_SUCCESS: Erfolgreich registriert! Sie erhalten Ihre Zugangsdaten in Kürze per Mail.
+
+[Section: resetPasswordView]
+RESET_PASSWORD_ERROR: Fehler beim Zurücksetzen Ihres Passworts.
+RESET_PASSWORD_SUCCESS: Ihr Passwort wurde erfolgreich zurückgesetzt. Wir schicken Ihnen in Kürze ein neues Passwort zum Einloggen per Mail. Danach können Sie in den Einstellungen Ihr neues Passwort festlegen.
+
+[Section: settingsView]
+ACCOUNT_DELETE_CONFIRMATION: Wollen Sie Ihr Cryptofox-Konto wirklich löschen? Das kann nicht rückgängig gemacht werden.
+CHANGE_PASSWORD: Passwort ändern
+CHANGE_PASSWORD_SUCCESS: Passwort geändert.
+CURRENCY_SELECTION: Währungsauswahl
+DELETE_ACCOUNT: Benutzerkonto löschen
+FIRST_NAME: Vorname
+INVALID_PASS: Bitte gültiges Passwort eingeben.
+LANGUAGE_SELECTION: Sprachauswahl
+LAST_NAME: Nachname
+PASSWORD_MISSMATCH: Passwörter stimmen nicht überein.
+PW_EXPLAIN: Wenn Sie Ihr Passwort ändern möchten, geben Sie es zweimal hier ein.
+RECEIVE_LOGIN_NOTIFICATIONS: Benachrichtigungen beim Einloggen
+RECEIVE_MAIL_NOTIFICATIONS: Benachrichtigungen per E-Mail
+REGENERATE: Erneuern
+REGENERATE_SUCCESS: Interner Schlüssel für Cryptofox erneuert.
+THEME_SELECTION: Theme Auswahl
+USER_PROFILE: Benutzerprofil
+USER_PROFILE_INFO: Ihr Benutzerprofil definiert das maximale monatliche Transaktionsvolumen Ihrer Bots und die Funktionen, auf die Sie Zugriff haben.
+VERIFY_PASSWORD: Passwort wiederholen

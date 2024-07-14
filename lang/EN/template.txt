@@ -1,0 +1,116 @@
+[Section: general]
+
+############################
+### GENERAL TRANSLATIONS ###
+############################
+
+ADMINISTRATION: Administration
+APP_VERSION: Version
+BUG: Bug
+CANCEL: Cancel
+CATEGORY: Category
+CREATE: Create
+CREATED: Created
+DELETE: Delete
+EDIT: Edit
+EMAIL: Email
+ENABLED: Enabled
+FEATURE: Feature
+FORWARDING: Forwarding...
+INVALID_INPUT: Invalid input
+LOADING: Loading...
+LOGIN_FAILED: Error during login.
+LOGIN_SUCCESS: Login successful
+LOGOUT: Logout
+LOGOUT_SUCCESS: Logout successful
+MESSAGE: Message
+NAME: Name
+NEW: New
+NEXT: Next
+NO_SELECTION: No selection
+NOTIFICATIONS: Notifications
+OKAY: Okay
+PASSWORD: Password
+PLCEHLDR_MAIL: email@address.com
+PREVIOUS: Previous
+PROGRESS: Mode
+QUOTE: Quote
+REFRESH: Refresh
+RESET_PASSWORD: Reset password
+REVERT_CHANGES: Discard changes
+SELECT: Select
+SEND_NOTIFICATIONS: Send notifications
+SETTINGS: Settings
+STATUS: Status
+SUBJECT: Subject
+TIME: Point in time
+TITLE: spa.js
+UPDATE: Save changes
+UPDATE_SUCCESS: Changes saved.
+USER: User
+USER_FEEDBACK: User feedback
+USERNAME: Username
+
+############################
+### STATUS & ENUM VALUES ###
+############################
+
+
+###########################
+### PLUGIN TRANSLATIONS ###
+###########################
+
+[Section: loginView]
+DO_IT_NOW: Get started now!
+FORGOT_YOUR_PASSWORD: Forgot your password?
+NOT_YET_REGISTERED: Not registered yet?
+PLEASE_SIGN_IN: Please log in
+SIGN_IN: Log in
+STAY_LOGGED_IN: Stay logged in
+
+[Section: navigation]
+BACKTESTING: Backtesting
+CREATE_BOT: Create bot
+DASHBOARD: Dashboard
+FEEDBACK: Feedback
+LOGOUT: Log out
+ORDERS: Orders
+SETTINGS: Settings
+SMART_TRADE: Smart trade
+SWITCH_USER: Switch user
+TICKETS: Tickets
+TRADING_MARKETS: Trading markets
+
+[Section: registerView]
+DISCLAIMER: I accept that no responsibility is taken for any errors on this website, including possible trading losses incurred by visiting the website, even due to errors.
+DISCLAIMER_NOT_ACCEPTED: You must accept our terms.
+REGISTER: Create user account
+REGISTRATION_ERROR: Error creating your user account.
+REGISTRATION_SUCCESS: Registration successful! We will email you the login data.
+
+[Section: resetPasswordView]
+RESET_PASSWORD_ERROR: An error occurred while resetting your password.
+RESET_PASSWORD_SUCCESS: Your password has been reset. We will email you a new password for login. Then you can choose a new password in Settings.
+
+[Section: settingsView]
+ACCOUNT_DELETE_CONFIRMATION: Do you really want to delete your Cryptofox account? This cannot be reverted.
+API_KEY_CRYPTOFOX: Internal key for Cryptofox
+CHANGE_PASSWORD: Change password
+CHANGE_PASSWORD_SUCCESS: Password changed.
+CURRENCY_SELECTION: Currency selection
+DELETE_ACCOUNT: Delete user account
+FIRST_NAME: First name
+INVALID_PASS: Please enter a valid password.
+LANGUAGE_SELECTION: Language selection
+LAST_NAME: Last name
+PASSWORD_MISSMATCH: Passwords don't match.
+PW_EXPLAIN: If you want to change your password, enter the new password twice.
+RECEIVE_LOGIN_NOTIFICATIONS: Notifications at login
+RECEIVE_MAIL_NOTIFICATIONS: Email notifications
+REGENERATE: Renew
+REGENERATE_SUCCESS: Internal key for Cryptofox renewed.
+THEME_SELECTION: Theme selection
+USE_PRO_UI: Professional view
+USER_PROFILE: User profile
+USER_PROFILE_INFO: Your user profile defines the maximum monthly transaction volume of your bots and the features you have access to.
+VERIFY_PASSWORD: Repeat password

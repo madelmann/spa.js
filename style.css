@@ -1,0 +1,595 @@
+* {
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -webkit-text-size-adjust: 100%;
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+}
+
+html {
+    -webkit-text-size-adjust: none;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden
+}
+
+html,
+body {
+    background: #F5F5F0;
+    color: #2f4050;
+    font-family: Lato, Consolas;
+    font-size: 12pt !important;
+    height: 100%;
+    margin: 0px auto;
+    overflow: auto;
+    padding: 0px;
+    width: 100%;
+
+    backface-visibility: hidden;
+    quotes: "«" "»";
+    overflow-x: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    /*border: 2px solid green;*/
+}
+
+footer {
+    /*border: 2px solid blue;*/
+
+    border-top: 1px solid rgb(219, 219, 219);
+    color: rgb(219, 219, 219);
+    margin-top: 30px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+header {
+    /*border: 2px solid rgb(224, 32, 176);*/
+
+    align-items: center;
+    /*background: linear-gradient(#e08216, #ffa31ac2);*/
+    /* background: linear-gradient(rgba(224, 130, 22, 1), rgb(252, 180, 72)); */
+
+    left: 0px;
+    height: 85px;
+    margin: 0px;
+    padding: 20px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+li {
+    display: inline;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 3px 3px 0px 3px;
+}
+
+li:hover {
+    border-radius: 5px 5px 0px 0px;
+    color: black;
+    cursor: pointer;
+}
+
+main {
+    flex: 0 0 auto;
+    margin: 0px;
+    /* min-height: calc(100vh - 200px); */
+    padding: 0px;
+}
+
+
+#clientarea {
+    /*border: 2px solid yellow;*/
+
+    height: auto;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    width: calc(100% - 240px);
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    align-content: space-between;
+    -webkit-align-content: space-between;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+
+    /*border: 2px solid red;*/
+}
+
+#footer {
+    /*border: 2px solid green;*/
+}
+
+#header {
+    /*border: 2px solid brown;*/
+
+    -webkit-transform: translate3d(0px);
+    -moz-transform: translate(0px);
+    -ms-transform: translate(0px);
+    -o-transform: translate(0px);
+    transform: translate(0px);
+
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+
+    /* background: linear-gradient(var(--bs-yellow), var(--bs-orange)); */
+    color: whitesmoke;
+    cursor: default;
+    display: block;
+    font-size: 12pt;
+    font-weight: bold;
+    height: 50px;
+    left: 0px;
+    margin: 0px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 10000;
+}
+
+#login_label {
+    font-size: 11pt;
+    position: absolute;
+    right: 5%;
+}
+
+#navigation {
+    /*border: 2px solid blue;*/
+
+    background-color: var(--bs-dark);
+    color: #929da8;
+    text-align: left;
+    width: 240px;
+}
+
+#notification-area {
+    display: flex;
+    flex-direction: column;
+    /*height: 100vh;*/
+    justify-content: flex-end;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 300px;
+    z-index: 10000;
+}
+
+#notification-area .notification {
+    animation: showNotification 500ms ease-in-out forwards;
+    background: #111;
+    border-radius: 5px;
+    color: #f5f5f5;
+    font-size: 15px;
+    font-weight: 600;
+    left: 20px;
+    margin: 5px 0px;
+    padding: 15px 10px;
+    opacity: 0;
+    position: relative;
+}
+
+@keyframes showNotification {
+    to {
+        left: 0px;
+        opacity: 1;
+    }
+}
+
+#notification-area .notification.error {
+    background: #ad1903;
+}
+
+#notification-area .notification.info {
+    background: #0186bb;
+}
+
+#notification-area .notification.success {
+    background: #1f661f;
+}
+
+#notification-area .notification.warning {
+    background: orange;
+}
+
+#plugin_html {
+    /*border: 2px solid yellow;*/
+
+    background: transparent;
+    margin: 0px;
+    padding: 40px 10px 10px 10px;
+}
+
+#plugin_loading {
+    /*border: 2px solid yellow;*/
+
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    right: 0px;
+    top: 0px;
+    z-index: 1000;
+}
+
+#user-message {
+    background-color: #025402;
+    color: white;
+    font-weight: bold;
+    height: auto;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 100000;
+}
+
+
+form input:invalid {
+    /*background-color: #ffdddd;*/
+    border-color: #c00000;
+}
+
+form input:required {
+    /*border-color: #800000;*/
+    border-width: 3px;
+}
+
+form input:required:invalid {
+    /*background-color: #ffdddd;*/
+    /*border-color: #c00000;*/
+}
+
+form input:required:valid {
+    /*background-color: #ddffdd;*/
+    /*border-color: green;*/
+}
+
+form input:valid {
+    /*background-color: #ddffdd;*/
+    /*border-color: green;*/
+    /*border-width: 3px;*/
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: textfield;
+}
+
+
+.admin {}
+
+.admin_hidden {
+    display: none;
+}
+
+.center {
+    /*border: 3px solid green;*/
+    margin: auto;
+    /*padding: 10px;*/
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hide_if_large {
+    display: none;
+}
+
+.hide_if_small {}
+
+.icon {
+    height: 24px;
+    width: 24px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.icon_small {
+    height: 20px;
+    width: 20px;
+}
+
+.icon_small:hover {
+    cursor: pointer;
+}
+
+.loading_spinner {
+    left: calc(50% - 100px);
+    position: absolute;
+    text-align: center;
+    width: 100px;
+}
+
+.preview {
+    background-color: black;
+    height: 137px;
+    width: 220px
+}
+
+.show_if_large {}
+
+.show_if_small {
+    display: none;
+}
+
+.shown {}
+
+.sub-plugin {
+    /*border: 1px solid #313131;*/
+    display: block;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.translation {
+    /*border: 1px solid red;*/
+    pointer-events: auto;
+}
+
+/* Tooltip container */
+.mytooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.mytooltip .mytooltiptext {
+    background-color: #555;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: normal;
+    max-width: 300px;
+    padding: 5px 5px;
+    text-align: center;
+    width: auto;
+    visibility: hidden;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -50%;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.mytooltip .mytooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.mytooltip:hover .mytooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* NOTIFICATIONS - BEGIN */
+
+.error {
+    border: 1px solid #ad1903;
+}
+
+.info {
+    border: 1px solid #0186bb;
+}
+
+.success {
+    border: 1px solid #1f661f;
+}
+
+.warning {
+    border: 1px solid orange;
+}
+
+/* NOTIFICATIONS - END */
+
+
+/* 1024PX AND OVER */
+@media all and (min-width: 1024px) {
+    .sub-plugin {
+        display: block;
+        width: 100%;
+    }
+
+    html,
+    body {
+        font-size: 12pt;
+    }
+
+    #clientarea {}
+
+    #container {
+        font-size: 11pt;
+    }
+
+    #header {}
+
+    #main {}
+
+    #navigation {
+        display: block;
+    }
+
+    #plugin_html {}
+}
+
+/* 1023PX AND BELOW */
+@media all and (max-width: 1023px) {
+
+    html,
+    body {
+        font-size: 12pt;
+    }
+
+    #clientarea {}
+
+    #container {
+        font-size: 11pt;
+    }
+
+    #header {}
+
+    #main {}
+
+    #navigation {
+        display: block;
+    }
+
+    #plugin_html {}
+}
+
+/* 812PX AND BELOW */
+@media all and (max-width: 812px) {
+
+    html,
+    body {
+        font-size: 11pt !important;
+    }
+
+    #clientarea {
+        top: 50px;
+        width: 100%;
+    }
+
+    #header {}
+
+    #main {}
+
+    #navigation {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    .hide_if_large {
+        display: block !important;
+    }
+
+    .hide_if_small {
+        display: none !important;
+    }
+
+    .show_if_large {
+        display: none !important;
+    }
+
+    .show_if_small {
+        display: block !important;
+    }
+}
+
+/* 414PX AND BELOW */
+@media all and (max-width: 414px) {
+
+    #notification-area {
+        width: 100%;
+    }
+
+}
