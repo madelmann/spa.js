@@ -17,7 +17,7 @@ function __main__()
 {
     __init__();
 
-	Cache.Retrieve();
+    Cache.Retrieve();
 
     API.Constructor();
     Translations.Constructor();
@@ -31,11 +31,11 @@ function __main__()
         Account.Constructor();
     }
 
-	Refresh.Constructor();
-	Refresh.Subscribe( FetchUserMessage, 600 );
+    Refresh.Constructor();
+    Refresh.Subscribe( FetchUserMessage, 600 );
 
-	mPluginLoading = $( "#plugin_loading" );
-	mPluginMain    = $( "#main" );
+    mPluginLoading = $( "#plugin_loading" );
+    mPluginMain    = $( "#main" );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,76 +43,76 @@ function __main__()
 
 function OnAbort( event )
 {
-	// request execution aborted
+    // request execution aborted
 
-	if ( mPlugin && mPlugin.OnAbort ) {
-		mPlugin.OnAbort( event );
-		return;
-	}
+    if ( mPlugin && mPlugin.OnAbort ) {
+        mPlugin.OnAbort( event );
+        return;
+    }
 
-	var message = "";
+    var message = "";
 
-	if ( event.currentTarget && event.currentTarget.responseText ) {
-		message = event.currentTarget.responseText;
-	}
-	else {
-		message = event.message;
-	}
+    if ( event.currentTarget && event.currentTarget.responseText ) {
+        message = event.currentTarget.responseText;
+    }
+    else {
+        message = event.message;
+    }
 
-	Notifications.notifyWarning( message );
+    Notifications.notifyWarning( message );
 }
 
 function OnAbortIgnored( event )
 {
-	// we ignore this error
+    // we ignore this error
 }
 
 function OnError( event )
 {
-	// request execution failed
+    // request execution failed
 
-	if ( mPlugin && mPlugin.OnError ) {
-		mPlugin.OnError( event );
-		return;
-	}
+    if ( mPlugin && mPlugin.OnError ) {
+        mPlugin.OnError( event );
+        return;
+    }
 
-	var message = "";
+    var message = "";
 
-	if ( event.currentTarget && event.currentTarget.responseText ) {
-		message = event.currentTarget.responseText;
-	}
-	else {
-		message = event.message;
-	}
+    if ( event.currentTarget && event.currentTarget.responseText ) {
+        message = event.currentTarget.responseText;
+    }
+    else {
+        message = event.message;
+    }
 
-	Notifications.notifyError( message );
+    Notifications.notifyError( message );
 }
 
 function OnErrorIgnored( event )
 {
-	// we ignore this error
+    // we ignore this error
 }
 
 function OnLoadReady( event )
 {
-	// loading is done
-	if ( mPlugin && mPlugin.OnLoadReady ) {
-		mPlugin.OnLoadReady( event );
-		return;
-	}
+    // loading is done
+    if ( mPlugin && mPlugin.OnLoadReady ) {
+        mPlugin.OnLoadReady( event );
+        return;
+    }
 
-	// nothing to do here
+    // nothing to do here
 }
 
 function OnSuccess( event )
 {
-	// everything is okay
-	if ( mPlugin && mPlugin.OnSuccess ) {
-		mPlugin.OnSuccess( event );
-		return;
-	}
+    // everything is okay
+    if ( mPlugin && mPlugin.OnSuccess ) {
+        mPlugin.OnSuccess( event );
+        return;
+    }
 
-	// nothing to do here
+    // nothing to do here
 }
 
 // Event handling
@@ -123,30 +123,30 @@ function OnSuccess( event )
 
 function Login()
 {
-	elPassword     = $( "#password" );
-	elStayLoggedIn = $( "#stay_logged_in" );
-	elUsername     = $( "#username" );
+    elPassword     = $( "#password" );
+    elStayLoggedIn = $( "#stay_logged_in" );
+    elUsername     = $( "#username" );
 
-	Account.Login( elUsername.value, elPassword.value, elStayLoggedIn.checked, OnLoginSuccess, OnLoginFailed );
+    Account.Login( elUsername.value, elPassword.value, elStayLoggedIn.checked, OnLoginSuccess, OnLoginFailed );
 }
 
 function Logout()
 {
-	Account.Logout( OnLogoutSuccess );
+    Account.Logout( OnLogoutSuccess );
 }
 
 function Register()
 {
-	Parameters.clear();
+    Parameters.clear();
 
-	LoadPluginWithHistory( "registerView" );
+    LoadPluginWithHistory( "registerView" );
 }
 
 function ResetPassword()
 {
-	Parameters.clear();
+    Parameters.clear();
 
-	LoadPluginWithHistory( "resetPasswordView" );
+    LoadPluginWithHistory( "resetPasswordView" );
 }
 
 // Account handling
@@ -157,38 +157,38 @@ function ResetPassword()
 
 function FetchUserMessage()
 {
-	fetch( "user-message.json" )
-		.then( response => {
-			if ( !response.ok ) {
-				throw new Error( "HTTP error " + response.status );
-			}
+    fetch( "user-message.json" )
+        .then( response => {
+            if ( !response.ok ) {
+                throw new Error( "HTTP error " + response.status );
+            }
 
-			return response.json();
-		} )
-		.then( json => {
-			if ( json.time > Globals.vm.stats.pageLoadedAt ) {
-				if ( mElUserMessage ) {
-					mElUserMessage.innerHTML = json.message;
+            return response.json();
+        } )
+        .then( json => {
+            if ( json.time > Globals.vm.stats.pageLoadedAt ) {
+                if ( mElUserMessage ) {
+                    mElUserMessage.innerHTML = json.message;
 
-					Translations.translate( mElUserMessage );
-				}
-			}
-		} )
-		.catch( function () {
-			// we don't catch this
-		} );
+                    Translations.translate( mElUserMessage );
+                }
+            }
+        } )
+        .catch( function () {
+            // we don't catch this
+        } );
 }
 
 function LoadingFinished()
 {
-	if ( mPluginLoading ) mPluginLoading.classList.add( "hidden" );
-	if ( mPluginMain )    mPluginMain.classList.remove( "hidden" );
+    if ( mPluginLoading ) mPluginLoading.classList.add( "hidden" );
+    if ( mPluginMain )    mPluginMain.classList.remove( "hidden" );
 }
 
 function LoadingStarted()
 {
-	if ( mPluginLoading ) mPluginLoading.classList.remove( "hidden" );
-	if ( mPluginMain )    mPluginMain.classList.add( "hidden" );
+    if ( mPluginLoading ) mPluginLoading.classList.remove( "hidden" );
+    if ( mPluginMain )    mPluginMain.classList.add( "hidden" );
 }
 
 // Plugin: Home

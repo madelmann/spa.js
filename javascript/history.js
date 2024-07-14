@@ -1,110 +1,102 @@
 
 History = {
 
-	Constructor: function( pluginName = null ) {
-		history.replaceState( { name: pluginName }, "", "" );
+    Constructor: function() {
+        mCallbackFailed = null;
+        mCallbackSuccess = null;
 
-		mCallbackFailed = null;
-		mCallbackSuccess = null;
+        mCurrentIndex = -1;
+        mData = new Array();
+        mElBackward = null;
+        mElForward = null;
+    },
 
-		mCurrentIndex = -1;
-		mData = new Array();
-		mElBackward = null;
-		mElForward = null;
+    Destructor: function() {
+        mData = new Array();
+    },
 
-		window.onpopstate = function( event ) {
-			if ( event.state && event.state.id !== null ) {
-				History.Go( event.state.id );
-			}
-		}
-	},
+    Backward: function() {
+        if ( mCurrentIndex > 0 ) {
+            mCurrentIndex--;
 
-	Destructor: function() {
-		mData = new Array();
-	},
+            History.LoadPlugin();
+        }
+    },
 
-	Backward: function() {
-		if ( mCurrentIndex > 0 ) {
-			mCurrentIndex--;
+    Clear: function() {
+        mData = [];
+    },
 
-			History.LoadPlugin();
-		}
-	},
+    Forward: function() {
+        if ( mCurrentIndex < mData.length ) {
+            mCurrentIndex++;
 
-	Clear: function() {
-		mData = [];
-	},
+            History.LoadPlugin();
+        }
+    },
 
-	Forward: function() {
-		if ( mCurrentIndex < mData.length ) {
-			mCurrentIndex++;
+    Go: function( index ) {
+        if ( index < 0 || index > mData.length - 1 ) {
+            return;
+        }
 
-			History.LoadPlugin();
-		}
-	},
+        mCurrentIndex = index;
 
-	Go: function( index ) {
-		if ( index < 0 || index > mData.length - 1 ) {
-			return;
-		}
+        History.LoadPlugin();
+    },
 
-		mCurrentIndex = index;
+    LoadPlugin: function() {
+        var entry = mData[ mCurrentIndex ];
+        if ( !entry ) {
+            return;
+        }
 
-		History.LoadPlugin();
-	},
+        Parameters.clear();
 
-	LoadPlugin: function() {
-		var entry = mData[ mCurrentIndex ];
-		if ( !entry ) {
-			return;
-		}
+        for ( var idx = 0; idx < entry.pluginData.length; ++idx ) {
+            Parameters.add( entry.pluginData[ idx ].name, entry.pluginData[ idx ].value );
+        }
 
-		Parameters.clear();
+        LoadPlugin( entry.pluginName );
+    },
 
-		for ( var idx = 0; idx < entry.pluginData.length; ++idx ) {
-			Parameters.add( entry.pluginData[ idx ].name, entry.pluginData[ idx ].value );
-		}
+    PushState: function( pluginName ) {
+        mCurrentIndex++;
 
-		LoadPlugin( entry.pluginName );
-	},
+        var entry = { id: mCurrentIndex, pluginName: pluginName, pluginData: Parameters.mParams };
 
-	PushState: function( pluginName ) {
-		mCurrentIndex++;
+        // through every after mCurrentIndex away
+        mData = mData.slice( 0, mCurrentIndex );
 
-		var entry = { id: mCurrentIndex, pluginName: pluginName, pluginData: Parameters.mParams };
+        // push new data
+        mData.push( entry );
 
-		// through every after mCurrentIndex away
-		mData = mData.slice( 0, mCurrentIndex );
+        // add new entry to browser history
+        history.pushState( entry, "", "" );
+    },
 
-		// push new data
-		mData.push( entry );
+    Refresh: function() {
+        History.LoadPlugin();
+    },
 
-		// add new entry to browser history
-		history.pushState( entry, "", "" );
-	},
+    UpdateButtons: function() {
+        if ( !mElBackward )	mElBackward = document.getElementById( "backward" );
+        if ( !mElForward )	mElForward = document.getElementById( "forward" );
 
-	Refresh: function() {
-		History.LoadPlugin();
-	},
-
-	UpdateButtons: function() {
-		if ( !mElBackward )	mElBackward = document.getElementById( "backward" );
-		if ( !mElForward )	mElForward = document.getElementById( "forward" );
-
-		if ( mCurrentIndex <= 0 ) {
-			if ( mElBackward ) mElBackward.classList.add( "disabled" );
-		}
-		else {
-			if ( mElBackward ) mElBackward.classList.remove( "disabled" );
-		}
-		
-		if ( mCurrentIndex >= mData.length - 1 ) {
-			if ( mElForward ) mElForward.classList.add( "disabled" );
-		}
-		else {
-			if ( mElForward ) mElForward.classList.remove( "disabled" );
-		}
-	}
+        if ( mCurrentIndex <= 0 ) {
+            if ( mElBackward ) mElBackward.classList.add( "disabled" );
+        }
+        else {
+            if ( mElBackward ) mElBackward.classList.remove( "disabled" );
+        }
+        
+        if ( mCurrentIndex >= mData.length - 1 ) {
+            if ( mElForward ) mElForward.classList.add( "disabled" );
+        }
+        else {
+            if ( mElForward ) mElForward.classList.remove( "disabled" );
+        }
+    }
 
 }
 
