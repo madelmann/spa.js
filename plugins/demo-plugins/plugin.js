@@ -2,7 +2,7 @@
 mPlugin = {
 
     // consts
-    DEMO_VIEW: "demo-history-api-access",
+    DEMO_VIEW: "demo-plugins",
 
     // instance members
 
@@ -19,7 +19,7 @@ mPlugin = {
     },
 
     NextDemo: function() {
-        LoadPluginWithHistory( "demo-convenience-api-acccess" );
+        LoadPluginWithHistory( "demo-notifications" );
     }
 
 };

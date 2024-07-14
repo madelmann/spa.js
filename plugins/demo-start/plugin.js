@@ -15,7 +15,7 @@ mPlugin = {
     },
 
     NextDemo: function() {
-        LoadPluginWithHistory( "demo-refresh-timer" );
+        LoadPluginWithHistory( "demo-templates" );
     }
 
 };
