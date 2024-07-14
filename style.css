@@ -374,19 +374,6 @@ input[type=number] {
     cursor: pointer;
 }
 
-.loading_spinner {
-    left: calc(50% - 100px);
-    position: absolute;
-    text-align: center;
-    width: 100px;
-}
-
-.preview {
-    background-color: black;
-    height: 137px;
-    width: 220px
-}
-
 .show_if_large {}
 
 .show_if_small {
@@ -397,19 +384,16 @@ input[type=number] {
 
 .sub-plugin {
     /*border: 1px solid #313131;*/
+
     display: block;
     overflow: auto;
     text-align: center;
     width: 100%;
 }
 
-.title {
-    text-align: center;
-    font-size: 30px;
-}
-
 .translation {
     /*border: 1px solid red;*/
+
     pointer-events: auto;
 }
 
@@ -508,9 +492,7 @@ input[type=number] {
 
     #main {}
 
-    #navigation {
-        display: block;
-    }
+    #navigation { }
 
     #plugin_html {}
 }
@@ -533,9 +515,7 @@ input[type=number] {
 
     #main {}
 
-    #navigation {
-        display: block;
-    }
+    #navigation { }
 
     #plugin_html {}
 }
@@ -557,12 +537,7 @@ input[type=number] {
 
     #main {}
 
-    #navigation {
-        position: absolute;
-        top: 50px;
-        width: 100%;
-        z-index: 999;
-    }
+    #navigation { }
 
     .hidden {
         display: none !important;
