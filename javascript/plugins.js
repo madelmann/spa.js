@@ -75,18 +75,29 @@ function OnErrorIgnored( event )
 
 function OnLoad()
 {
+    // Initializing components
+    // {
+    // Plugins
     mPluginCSS     = $( "#plugin_css" );
     mPluginHTML    = $( "#plugin_html" );
     mPluginLoading = $( "#plugin_loading" );
     mPluginScript  = $( "#plugin_script" );
+    // }
+
+    window.onpopstate = function( event ) {
+        if ( event.state && event.state.id !== null ) {
+            History.Go( event.state.id );
+        }
+    }
 
     mElFooter      = $( "#footer" );
     mElHeader      = $( "#header" );
     mElNavigation  = $( "#navigation" );
     mElUserMessage = $( "#user-message" );
 
-    LoadPluginInto( "footer", mElFooter );
-    LoadPluginInto( "header", mElHeader );
+    if ( mElFooter ) LoadPluginInto( "footer", mElFooter );
+    if ( mElHeader ) LoadPluginInto( "header", mElHeader );
+    // if ( mElNavigation ) LoadPluginInto( "navigation", mElNavigation );
 
     LoadPlugin( "loadingView", OnLoadReady );
 }
