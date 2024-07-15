@@ -1,30 +1,24 @@
 
-// convenience API access
-function execute( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
-{
-    return API.execute( pluginFunc, callbackSuccess, callbackError, callbackAbort );
-}
-
 // HTTP methods
-function get( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+function get( url, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
-    return API.get( pluginFunc, callbackSuccess, callbackError, callbackAbort );
+    return API.get( url, callbackSuccess, callbackError, callbackAbort );
 }
-function getExternal( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+function getExternal( url, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
-    return API.external( pluginFunc, callbackSuccess, callbackError, callbackAbort, "GET" );
+    return API.external( url, "GET", null, callbackSuccess, callbackError, callbackAbort );
 }
-function patch( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+function patch( url, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
-    return API.post( pluginFunc, callbackSuccess, callbackError, callbackAbort, "PATCH" );
+    return API.post( url, callbackSuccess, callbackError, callbackAbort, "PATCH" );
 }
-function post( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+function post( url, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
-    return API.post( pluginFunc, callbackSuccess, callbackError, callbackAbort );
+    return API.post( url, callbackSuccess, callbackError, callbackAbort );
 }
-function postExternal( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+function postExternal( url, body, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
-    return API.external( pluginFunc, callbackSuccess, callbackError, callbackAbort, "POST" );
+    return API.external( url, "POST", body, callbackSuccess, callbackError, callbackAbort );
 }
 
 
@@ -42,31 +36,14 @@ API = {
         this.version  = version  ? version  : "";
     },
 
-    execute: function( pluginFunc, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored ) {
-        if ( pluginFunc.length === 0 ) {
-            return false;
-        }
-
-        var pluginURL = API.__buildPluginUrl__( pluginFunc, true );
-    
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.addEventListener( "abort", callbackAbort, false );
-        xmlhttp.addEventListener( "error", callbackError, false );
-        xmlhttp.addEventListener( "load", callbackSuccess, false );
-        xmlhttp.open( "POST", pluginURL, true );
-        xmlhttp.send();
-
-        return true;
-    },
-
-    external: function( apiURL, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored, method ) {
-        fetch( apiURL, {
+    external: function( url, method, body, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored ) {
+        fetch( url, {
             Method: method,
             Headers: {
               Accept: "application.json",
               "Content-Type": "application/json"
             },
-            // Body: body,
+            Body: body,
             Cache: "default"
           } )
             .then( response => {
@@ -76,39 +53,11 @@ API = {
 
                 return response.json();
             } )
-            .then( json => {
-                callbackSuccess( json );
+            .then( data => {
+                callbackSuccess( data );
             } )
             .catch( error => {
                 callbackError( error );
-            } );
-    },
-
-    fetch: function( pluginFunc, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored ) {
-        if ( pluginFunc.length === 0 ) {
-            return false;
-        }
-
-        var pluginURL = this.__buildApiUrl__( pluginFunc, true );
-
-        fetch( pluginURL )
-            .then( response => {
-                if ( !response.ok ) {
-                    throw new Error( "HTTP error " + response.status );
-                }
-
-                return response.json();
-            } )
-            .then( json => {
-                this.currentLanguage = json.language;
-                this.data = json.tokens;
-
-                this.translate( document.getElementById( "container" ) );
-
-                callbackSuccess();
-            } )
-            .catch( function () {
-                callbackError();
             } );
     },
 
