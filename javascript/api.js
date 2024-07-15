@@ -10,6 +10,10 @@ function get( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIg
 {
     return API.get( pluginFunc, callbackSuccess, callbackError, callbackAbort );
 }
+function getExternal( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+{
+    return API.external( pluginFunc, callbackSuccess, callbackError, callbackAbort, "GET" );
+}
 function patch( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
     return API.post( pluginFunc, callbackSuccess, callbackError, callbackAbort, "PATCH" );
@@ -17,6 +21,10 @@ function patch( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnError
 function post( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
 {
     return API.post( pluginFunc, callbackSuccess, callbackError, callbackAbort );
+}
+function postExternal( pluginFunc, callbackSuccess = OnSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored )
+{
+    return API.external( pluginFunc, callbackSuccess, callbackError, callbackAbort, "POST" );
 }
 
 
@@ -49,6 +57,31 @@ API = {
         xmlhttp.send();
 
         return true;
+    },
+
+    external: function( apiURL, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored, method ) {
+        fetch( apiURL, {
+            Method: method,
+            Headers: {
+              Accept: "application.json",
+              "Content-Type": "application/json"
+            },
+            // Body: body,
+            Cache: "default"
+          } )
+            .then( response => {
+                if ( !response.ok ) {
+                    throw new Error( "HTTP error " + response.status );
+                }
+
+                return response.json();
+            } )
+            .then( json => {
+                callbackSuccess( json );
+            } )
+            .catch( error => {
+                callbackError( error );
+            } );
     },
 
     fetch: function( pluginFunc, callbackSuccess, callbackError = OnErrorIgnored, callbackAbort = OnAbortIgnored ) {
