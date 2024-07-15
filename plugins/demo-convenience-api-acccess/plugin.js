@@ -7,15 +7,33 @@ mPlugin = {
     // instance members
 
     OnLoad: function() {
-        // nothing to do here
+        mElConversions = $( "#conversions > tbody" );
+
+        Refresh.Subscribe( this.Autorefresh, 10 );
     },
 
     OnLoadReady: function() {
+        this.Autorefresh();
+
         LoadingFinished();
     },
 
     OnUnload: function() {
-        // nothing to do here
+        Refresh.Unsubscribe( this.Autorefresh );
+    },
+
+    Autorefresh: function() {
+        getExternal(
+            "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USDC",
+            ( data ) => {
+                mElConversions.innerHTML = Templates.clone( "template-conversion" )
+                                            .bind( "FROM", 1 )
+                                            .bind( "TO", data[ "USDC" ] )
+                                            .str();
+            },
+            ( error ) => {
+                notifyError( "Could not get conversion for BTC to USDC" );
+            } );
     },
 
     NextDemo: function() {

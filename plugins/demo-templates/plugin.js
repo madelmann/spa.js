@@ -77,7 +77,7 @@ mPlugin = {
         this.pagination = data.pagination;
 
         Pagination( this.pagination );
-    },
+    }
 
 };
 

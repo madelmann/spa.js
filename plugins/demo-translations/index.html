@@ -1,6 +1,46 @@
 <div class="sub-plugin">
-    <h2>Demo: Translations</h2>
-    <div>
+    <h2>Demo: Translations and formats</h2>
+
+    <div class="col-12">
+        <label for="language_selection" class="form-label translation" token="LANGUAGE_SELECTION">LANGUAGE_SELECTION</label>
+        <select id="language_selection" class="form-select" onchange="mPlugin.SwitchLanguage();">
+            <option disabled selected class="translation" token="LANGUAGE_SELECTION">LANGUAGE_SELECTION</option>
+            <option value="DEV">DEVELOPMENT</option>
+            <option value="DE">Deutsch</option>
+            <option value="EN">English</option>
+        </select>
+    </div>
+
+    <hr />
+
+    <div class="col-12">
+        <button class="btn btn-primary translation" onclick="mPlugin.Reload();" token="REFRESH">REFRESH</button>
+        <div class="pagination">
+        </div>
+    </div>
+    
+    <div class="sub-plugin">
+        <table id="transactions" class="table" style="width: 100%">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="show_if_large translation" token="BROKER">BROKER</th>
+                    <th class="show_if_large translation" token="SIDE">SIDE</th>
+                    <!-- don"t display the account <th class="translation" token="ACCOUNT">ACCOUNT</th> -->
+                    <th class="translation" token="INSTRUMENT_CODE">INSTRUMENT_CODE</th>
+                    <th class="translation" token="TIME">TIME</th>
+                    <th class="translation" token="AMOUNT">AMOUNT</th>
+                    <th class="translation" token="PRICE">PRICE</th>
+                    <!-- not gonna be needed for a long time <th class="show_if_large translation" token="TYPE">TYPE</th> -->
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="col-12">
+        <div class="pagination">
+        </div>
     </div>
 
     <hr />
