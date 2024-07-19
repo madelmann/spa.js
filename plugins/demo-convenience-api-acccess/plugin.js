@@ -38,6 +38,10 @@ mPlugin = {
 
     NextDemo: function() {
         LoadPluginWithHistory( "demo-convenience-controls" );
+    },
+
+    Reload: function() {
+        this.Autorefresh();
     }
 
 };
