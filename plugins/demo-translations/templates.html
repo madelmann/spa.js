@@ -1,0 +1,28 @@
+<!-- templates -->
+
+<template id="template-row-loading">
+    <tr>
+        <td colspan="6"><img src="resources/images/loading.gif" alt="Loading..." /></td>
+    </tr>
+</template>
+
+<template id="template-transaction-row">
+    <tr class="side_{{SIDE}}">
+        <td class="show_if_large">{{BROKER}}</td>
+        <td class="show_if_large translation" token="{{SIDE}}">{{SIDE}}</td>
+        <!-- don"t display the account <td>{{ACCOUNT}}</td> -->
+        <td>{{INSTRUMENT_CODE}}</td>
+        <td>{{TIME}}</td>
+        <td>{{AMOUNT}}</td>
+        <td>{{PRICE}}</td>
+        <!-- not gonna be needed for a long time <td class="show_if_large translation" token="{{TYPE}}">{{TYPE}}</td> -->
+    </tr>
+</template>
+
+<template id="template-transaction-row-default">
+    <tr>
+        <td colspan="6" class="translation" token="NO_TRANSACTIONS_AVAILABLE">NO_TRANSACTIONS_AVAILABLE</td>
+    </tr>
+</template>
+
+<!-- templates -->
